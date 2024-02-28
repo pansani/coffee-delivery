@@ -21,6 +21,7 @@ export const coffees = [
     type: "Tradicional",
     value: 9.9,
     id: 0,
+    quantity: 0,
   },
   {
     image: Americano,
@@ -29,6 +30,7 @@ export const coffees = [
     type: "Tradicional",
     value: 9.9,
     id: 1,
+    quantity: 0,
   },
   {
     image: Cremoso,
@@ -37,6 +39,7 @@ export const coffees = [
     type: "Tradicional",
     value: 9.9,
     id: 2,
+    quantity: 0,
   },
   {
     image: Gelado,
@@ -46,6 +49,7 @@ export const coffees = [
     isCold: true,
     value: 9.9,
     id: 3,
+    quantity: 0,
   },
   {
     image: CafeComLeite,
@@ -55,6 +59,7 @@ export const coffees = [
     hasmilk: true,
     value: 9.9,
     id: 4,
+    quantity: 0,
   },
   {
     image: Latte,
@@ -65,6 +70,7 @@ export const coffees = [
     hasMilk: true,
     value: 9.9,
     id: 5,
+    quantity: 0,
   },
   {
     image: Capuccino,
@@ -75,6 +81,7 @@ export const coffees = [
     hasMilk: true,
     value: 9.9,
     id: 6,
+    quantity: 0,
   },
   {
     image: Macchiato,
@@ -85,6 +92,7 @@ export const coffees = [
     hasMilk: true,
     value: 9.9,
     id: 7,
+    quantity: 0,
   },
   {
     image: Mocaccino,
@@ -94,6 +102,7 @@ export const coffees = [
     hasMilk: true,
     value: 9.9,
     id: 8,
+    quantity: 0,
   },
   {
     image: ChocolateQuente,
@@ -102,6 +111,7 @@ export const coffees = [
     type: "Especial",
     value: 9.9,
     id: 9,
+    quantity: 0,
   },
   {
     image: Cubano,
@@ -112,6 +122,7 @@ export const coffees = [
     isCold: true,
     value: 9.9,
     id: 10,
+    quantity: 0,
   },
   {
     image: Havaiano,
@@ -120,6 +131,7 @@ export const coffees = [
     type: "Especial",
     value: 9.9,
     id: 11,
+    quantity: 0,
   },
   {
     image: Arabe,
@@ -128,6 +140,7 @@ export const coffees = [
     type: "Especial",
     value: 9.9,
     id: 12,
+    quantity: 0,
   },
   {
     image: Irlandes,
@@ -137,5 +150,6 @@ export const coffees = [
     isAlcoholic: true,
     value: 9.9,
     id: 13,
+    quantity: 0,
   },
 ];

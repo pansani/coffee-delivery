@@ -22,6 +22,14 @@ export function CoffeesContent() {
     }));
   };
 
+  // I need to create an object updatedCoffes to pick only the ones that the quantity is bigger than 0, how am i gonna do that? i have no fucking clue
+  const updatedCoffees = coffees.map((coffee) => {
+    return {
+      ...coffee,
+      quantity: productQuantity[coffee.id] || 0,
+    };
+  });
+
   return (
     <>
       <CoffeesContainerTitle>Nossos Cafés</CoffeesContainerTitle>

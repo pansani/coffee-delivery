@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const CoffeesContainer = styled.div`
-  width: 70rem;
+  min-width: 70rem;
   height: 85rem;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 20px;
 
   margin-top: 80px;
 `;
