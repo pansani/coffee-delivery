@@ -21,7 +21,7 @@ export const coffees = [
     type: "Tradicional",
     value: 9.9,
     id: 0,
-    quantity: 0,
+    quantity: 1,
   },
   {
     image: Americano,
@@ -30,7 +30,7 @@ export const coffees = [
     type: "Tradicional",
     value: 9.9,
     id: 1,
-    quantity: 0,
+    quantity: 1,
   },
   {
     image: Cremoso,

@@ -8,6 +8,8 @@ import {
 
 import DeliveryImage from "../../assets/delivery-image.svg";
 
+//Turn the data dynamic and not static via props or createContext and Reducers <- (study this)
+
 export function Delivered() {
   return (
     <>

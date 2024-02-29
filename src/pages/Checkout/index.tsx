@@ -1,7 +1,7 @@
 // For adding a coffee in the card, i will use tge following logic:
 // If the quantity of the coffe is > 0 then, the id of the coffee that the quantity is more than 0 will be displayed;
 // Use react-hoof-form and zod to the adress form
-// I have to also to fin a way to update the updatedCoffes from this file here because of the remove button in the Cart
+// I have to also to find a way to update the updatedCoffes from this file here because of the remove button in the Cart
 
 import { NavLink } from "react-router-dom";
 import { CheckoutCoffeeCard } from "../../components/ChekoutCoffeeCard";
@@ -22,6 +22,11 @@ import {
   MapPinLine,
   Money,
 } from "@phosphor-icons/react";
+
+import { coffees } from "../../Coffees";
+
+// Split this HTML code into more components, the code is too repetitive and too big
+// Find a simple way to get the data of the coffes that has a quantity bigger than 0
 
 export function Checkout() {
   return (
@@ -79,8 +84,19 @@ export function Checkout() {
         </CheckoutFormsContainer>
         <ProductsCheckoutContainer>
           <div>
-            <CheckoutCoffeeCard />
-            <CheckoutCoffeeCard />
+            {coffees.map((coffee) => {
+              if (coffee.quantity > 0) {
+                return (
+                  <CheckoutCoffeeCard
+                    coffeeName={coffee.name}
+                    src={coffee.image}
+                    coffeeQuantity={coffee.quantity}
+                    coffeePrice={coffee.value}
+                  />
+                );
+              }
+              return null;
+            })}
           </div>
           <PriceData>
             <div>
