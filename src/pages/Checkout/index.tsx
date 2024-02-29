@@ -1,7 +1,4 @@
-// For adding a coffee in the card, i will use tge following logic:
-// If the quantity of the coffe is > 0 then, the id of the coffee that the quantity is more than 0 will be displayed;
 // Use react-hoof-form and zod to the adress form
-// I have to also to find a way to update the updatedCoffes from this file here because of the remove button in the Cart
 
 import { NavLink } from "react-router-dom";
 import { CheckoutCoffeeCard } from "../../components/ChekoutCoffeeCard";
@@ -22,13 +19,23 @@ import {
   MapPinLine,
   Money,
 } from "@phosphor-icons/react";
-
-import { coffees } from "../../Coffees";
+import { useContext } from "react";
+import { CheckoutContext } from "../../contexts/CheckoutContext";
+import { UpdatedCoffeesContext } from "../../contexts/UpdatedCoffeesContext";
 
 // Split this HTML code into more components, the code is too repetitive and too big
-// Find a simple way to get the data of the coffes that has a quantity bigger than 0
 
 export function Checkout() {
+  const {
+    handleStreetChange,
+    handleNumberChange,
+    handleUfChange,
+    handleCityChange,
+    handlePaymentMethodChange,
+  } = useContext(CheckoutContext);
+
+  const { updatedCoffees } = useContext(UpdatedCoffeesContext);
+
   return (
     <>
       <CheckoutContainer>
@@ -47,12 +54,24 @@ export function Checkout() {
                 minLength={8}
                 maxLength={8}
               ></input>
-              <input type="text" placeholder="Rua"></input>
-              <input type="text" placeholder="Numero"></input>
+              <input
+                type="text"
+                placeholder="Rua"
+                onChange={handleStreetChange}
+              />
+              <input
+                type="text"
+                placeholder="Numero"
+                onChange={handleNumberChange}
+              />
               <input type="text" placeholder="Complemento"></input>
               <input type="text" placeholder="Bairro"></input>
-              <input type="text" placeholder="Cidade"></input>
-              <input type="text" placeholder="UF"></input>
+              <input
+                type="text"
+                placeholder="Cidade"
+                onChange={handleCityChange}
+              />
+              <input type="text" placeholder="UF" onChange={handleUfChange} />
             </form>
           </AdressFormContainer>
           <PaymentFormConatiner>
@@ -64,17 +83,29 @@ export function Checkout() {
             </p>
             <ButtonsPaymentContainer>
               <div>
-                <button type="button">
+                <button
+                  type="button"
+                  value="cartao-de-credito"
+                  onClick={handlePaymentMethodChange}
+                >
                   <Cards /> <p>CARTÃO DE CRÉDITO</p>
                 </button>
               </div>
               <div>
-                <button type="button">
+                <button
+                  type="button"
+                  value="Cartão de débito"
+                  onClick={handlePaymentMethodChange}
+                >
                   <Bank /> <p>CARTÃO DE DÉBITO</p>
                 </button>
               </div>
               <div>
-                <button type="button">
+                <button
+                  type="button"
+                  value="Dinheiro"
+                  onClick={handlePaymentMethodChange}
+                >
                   {" "}
                   <Money /> <p>DINHEIRO</p>
                 </button>
@@ -84,19 +115,15 @@ export function Checkout() {
         </CheckoutFormsContainer>
         <ProductsCheckoutContainer>
           <div>
-            {coffees.map((coffee) => {
-              if (coffee.quantity > 0) {
-                return (
-                  <CheckoutCoffeeCard
-                    coffeeName={coffee.name}
-                    src={coffee.image}
-                    coffeeQuantity={coffee.quantity}
-                    coffeePrice={coffee.value}
-                  />
-                );
-              }
-              return null;
-            })}
+            {updatedCoffees.map((coffee) => (
+              <CheckoutCoffeeCard
+                key={coffee.id}
+                coffeeName={coffee.name}
+                src={coffee.image}
+                coffeeQuantity={coffee.quantity}
+                coffeePrice={coffee.value}
+              />
+            ))}
           </div>
           <PriceData>
             <div>

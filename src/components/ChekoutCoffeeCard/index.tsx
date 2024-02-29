@@ -13,7 +13,7 @@ import {
 interface CheckoutCoffeeCardProps {
   coffeeName: string;
   src: string;
-  coffeeQuantity: number | null;
+  coffeeQuantity: number;
   coffeePrice: number;
 }
 
