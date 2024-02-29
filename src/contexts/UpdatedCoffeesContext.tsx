@@ -20,6 +20,7 @@ interface CoffeesContextValue {
   allCoffees: CoffeeData[];
   handleIncreaseQuantity: (id: number) => void;
   handleDecreaseQuantity: (id: number) => void;
+  totalQuantity: number;
 }
 
 export const UpdatedCoffeesContext = createContext<CoffeesContextValue>({
@@ -27,6 +28,7 @@ export const UpdatedCoffeesContext = createContext<CoffeesContextValue>({
   allCoffees: [],
   handleIncreaseQuantity: () => {},
   handleDecreaseQuantity: () => {},
+  totalQuantity: 0,
 });
 
 export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
@@ -54,6 +56,11 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
   };
 
   const updatedCoffees = allCoffees.filter((coffee) => coffee.quantity > 0);
+  const totalQuantity = updatedCoffees.reduce(
+    (total, coffee) => total + coffee.value,
+    0
+  );
+  console.log(totalQuantity);
 
   return (
     <UpdatedCoffeesContext.Provider
@@ -62,6 +69,7 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
         allCoffees,
         handleIncreaseQuantity,
         handleDecreaseQuantity,
+        totalQuantity,
       }}
     >
       {children}

@@ -33,8 +33,12 @@ export function Checkout() {
     handleBairroChange,
   } = useContext(CheckoutContext);
 
-  const { updatedCoffees, handleDecreaseQuantity, handleIncreaseQuantity } =
-    useContext(UpdatedCoffeesContext);
+  const {
+    updatedCoffees,
+    handleDecreaseQuantity,
+    handleIncreaseQuantity,
+    totalQuantity,
+  } = useContext(UpdatedCoffeesContext);
 
   return (
     <>
@@ -135,7 +139,7 @@ export function Checkout() {
           <PriceData>
             <div>
               <span>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>R$ {totalQuantity}</span>
             </div>
             <div>
               <span>Entrega</span>
@@ -143,7 +147,7 @@ export function Checkout() {
             </div>
             <div>
               <span>Total</span>
-              <span>R$ 33,20</span>
+              <span>R$ {totalQuantity + 3.5}</span>
             </div>
           </PriceData>
           <NavLink to="./Delivered" title="Delivered">
