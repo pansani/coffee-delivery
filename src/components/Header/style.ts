@@ -48,6 +48,28 @@ export const CartButton = styled.button`
 
   border: 0;
   border-radius: 6px;
+
+  position: relative;
+
+  div {
+    width: 1rem;
+    height: 1rem;
+
+    background-color: ${(props) => props.theme["yellow-dark"]};
+    color: ${(props) => props.theme.white};
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: -7px;
+    right: -7px;
+  }
 `;
 
 export const PlaceName = styled.span`

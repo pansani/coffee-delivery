@@ -9,6 +9,7 @@ import {
   ProductQuantity,
 } from "./style";
 import { ShoppingCart } from "@phosphor-icons/react";
+import { NavLink } from "react-router-dom";
 
 export interface CoffeeCardProps {
   coffeeImage: string;
@@ -68,9 +69,11 @@ export function CoffeeCard({
           <p>{coffeeQuantity}</p>
           <button onClick={increaseQuantity}>+</button>
         </ProductQuantity>
-        <BuyButton>
-          <ShoppingCart weight="fill" size={20} />
-        </BuyButton>
+        <NavLink to="./checkout" title="Checkout">
+          <BuyButton>
+            <ShoppingCart weight="fill" size={20} />
+          </BuyButton>
+        </NavLink>
       </BuyProductContainer>
     </ProductContainer>
   );

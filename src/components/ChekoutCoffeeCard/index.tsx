@@ -57,7 +57,7 @@ export function CheckoutCoffeeCard({
             </RemoveButton>
           </CoffeeButtons>
         </CoffeeData>
-        <span>{coffeePrice}</span>
+        <span>R${coffeePrice.toFixed(2)}</span>
       </CoffeeCardContainer>
       <hr></hr>
     </CardCoffee>

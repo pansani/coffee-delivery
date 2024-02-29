@@ -41,6 +41,7 @@ export function Checkout() {
     handleRemoveCoffee,
   } = useContext(UpdatedCoffeesContext);
 
+  const totalPlusDelivery = totalValue + 3.5;
   return (
     <>
       <CheckoutContainer>
@@ -141,7 +142,7 @@ export function Checkout() {
           <PriceData>
             <div>
               <span>Total de itens</span>
-              <span>R$ {totalValue}</span>
+              <span>R$ {totalValue}0</span>
             </div>
             <div>
               <span>Entrega</span>
@@ -149,7 +150,7 @@ export function Checkout() {
             </div>
             <div>
               <span>Total</span>
-              <span>R$ {totalValue + 3.5}</span>
+              <span>R$ {totalPlusDelivery.toFixed(2)}</span>
             </div>
           </PriceData>
           <NavLink to="./Delivered" title="Delivered">

@@ -19,6 +19,7 @@ interface CoffeesContextValue {
   updatedCoffees: CoffeeData[];
   allCoffees: CoffeeData[];
   totalValue: number;
+  totalQuantity: number;
   handleIncreaseQuantity: (id: number) => void;
   handleDecreaseQuantity: (id: number) => void;
   handleRemoveCoffee: (id: number) => void;
@@ -28,13 +29,19 @@ export const UpdatedCoffeesContext = createContext<CoffeesContextValue>({
   updatedCoffees: [],
   allCoffees: [],
   totalValue: 0,
+  totalQuantity: 0,
   handleIncreaseQuantity: () => {},
   handleDecreaseQuantity: () => {},
   handleRemoveCoffee: () => {},
 });
 
 export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
-  const [allCoffees, setAllCoffees] = useState(coffees);
+  const [allCoffees, setAllCoffees] = useState(
+    coffees.map((coffee) => ({
+      ...coffee,
+      value: Number(coffee.value),
+    }))
+  );
 
   const handleIncreaseQuantity = (id: number) => {
     setAllCoffees((prevCoffees) =>
@@ -64,7 +71,11 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
 
   const updatedCoffees = allCoffees.filter((coffee) => coffee.quantity > 0);
   const totalValue = updatedCoffees.reduce(
-    (total, coffee) => total + coffee.value,
+    (total, coffee) => total + Number(coffee.value),
+    0
+  );
+  const totalQuantity = updatedCoffees.reduce(
+    (total, coffee) => total + coffee.quantity,
     0
   );
 
@@ -74,6 +85,7 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
         updatedCoffees,
         allCoffees,
         totalValue,
+        totalQuantity,
         handleIncreaseQuantity,
         handleDecreaseQuantity,
         handleRemoveCoffee,
