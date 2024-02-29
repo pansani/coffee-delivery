@@ -11,8 +11,7 @@ import { useContext } from "react";
 import { CheckoutContext } from "../../contexts/CheckoutContext";
 
 export function Delivered() {
-  const { deliveryAddress, deliveryCity, paymentMethod } =
-    useContext(CheckoutContext);
+  const { paymentMethod, lastSubmittedValues } = useContext(CheckoutContext);
 
   return (
     <>
@@ -26,9 +25,10 @@ export function Delivered() {
             </IconContainer>
             <div>
               <p>
-                Entrega em <strong>{deliveryAddress}</strong>
+                Entrega em{" "}
+                <strong>{lastSubmittedValues?.deliveryAddress}</strong>
               </p>
-              <span>{deliveryCity}</span>
+              <span>{lastSubmittedValues?.deliveryCity}</span>
             </div>
           </DataRow>
           <DataRow>

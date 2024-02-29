@@ -19,7 +19,7 @@ import {
   MapPinLine,
   Money,
 } from "@phosphor-icons/react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CheckoutContext } from "../../contexts/CheckoutContext";
 import { UpdatedCoffeesContext } from "../../contexts/UpdatedCoffeesContext";
 
@@ -31,6 +31,17 @@ export function Checkout() {
     handleCityChange,
     handlePaymentMethodChange,
     handleBairroChange,
+    handleCepChange,
+    handleComplementChange,
+    bairro,
+    city,
+    complement,
+    number,
+    street,
+    uf,
+    cep,
+    paymentMethod,
+    handleFormSubmit,
   } = useContext(CheckoutContext);
 
   const {
@@ -40,6 +51,16 @@ export function Checkout() {
     handleIncreaseQuantity,
     handleRemoveCoffee,
   } = useContext(UpdatedCoffeesContext);
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    if (street && number && city && uf && bairro && cep && paymentMethod) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [street, number, city, uf, bairro, cep, paymentMethod]);
 
   const totalPlusDelivery = totalValue + 3.5;
   return (
@@ -59,29 +80,45 @@ export function Checkout() {
                 placeholder="CEP"
                 minLength={8}
                 maxLength={8}
+                onChange={handleCepChange}
+                value={cep}
               ></input>
               <input
                 type="text"
                 placeholder="Rua"
                 onChange={handleStreetChange}
+                value={street}
               />
               <input
                 type="text"
                 placeholder="Numero"
                 onChange={handleNumberChange}
+                value={number}
               />
-              <input type="text" placeholder="Complemento"></input>
+              <input
+                type="text"
+                placeholder="Complemento"
+                onChange={handleComplementChange}
+                value={complement}
+              ></input>
               <input
                 type="text"
                 placeholder="Bairro"
                 onChange={handleBairroChange}
+                value={bairro}
               ></input>
               <input
                 type="text"
                 placeholder="Cidade"
                 onChange={handleCityChange}
+                value={city}
               />
-              <input type="text" placeholder="UF" onChange={handleUfChange} />
+              <input
+                type="text"
+                placeholder="UF"
+                onChange={handleUfChange}
+                value={uf}
+              />
             </form>
           </AdressFormContainer>
           <PaymentFormConatiner>
@@ -154,7 +191,12 @@ export function Checkout() {
             </div>
           </PriceData>
           <NavLink to="./Delivered" title="Delivered">
-            <SubmitCheckoutButton type="submit">
+            <SubmitCheckoutButton
+              type="submit"
+              disabled={isButtonDisabled}
+              isDisabled={isButtonDisabled}
+              onClick={handleFormSubmit}
+            >
               CONFIRMAR PEDIDO
             </SubmitCheckoutButton>
           </NavLink>

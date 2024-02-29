@@ -180,16 +180,18 @@ export const PriceData = styled.div`
   }
 `;
 
-export const SubmitCheckoutButton = styled.button`
+export const SubmitCheckoutButton = styled.button<{ isDisabled?: boolean }>`
   width: 23rem;
   height: 2.875rem;
 
-  background-color: ${(props) => props.theme.yellow};
-  color: ${(props) => props.theme.white};
+  background-color: ${(props) =>
+    props.isDisabled ? props.theme["yellow-light"] : props.theme.yellow};
+  color: ${(props) =>
+    props.isDisabled ? props.theme["base-subtitle"] : props.theme.white};
 
   margin-top: 30px;
 
-  cursor: pointer;
+  cursor: ${(props) => (props.isDisabled ? "not-allowed" : "pointer")};
 
   border: none;
 `;
