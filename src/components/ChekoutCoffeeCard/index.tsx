@@ -8,13 +8,14 @@ import {
   RemoveButton,
 } from "./style";
 
-//Pass props to data of this component and create a way to pick only the coffees objects that have a quantity > 0
-
 interface CheckoutCoffeeCardProps {
   coffeeName: string;
   src: string;
   coffeeQuantity: number;
   coffeePrice: number;
+  coffeeId: number;
+  decreaseProduct: (id: number) => void;
+  increaseProduct: (id: number) => void;
 }
 
 export function CheckoutCoffeeCard({
@@ -22,6 +23,9 @@ export function CheckoutCoffeeCard({
   src,
   coffeeQuantity,
   coffeePrice,
+  coffeeId,
+  increaseProduct,
+  decreaseProduct,
 }: CheckoutCoffeeCardProps) {
   return (
     <CardCoffee>
@@ -30,9 +34,19 @@ export function CheckoutCoffeeCard({
         <CoffeeData>
           <span>{coffeeName}</span>
           <CoffeeButtons>
-            <ButtonQuantity type="button">--</ButtonQuantity>
+            <ButtonQuantity
+              type="button"
+              onClick={() => decreaseProduct(coffeeId)}
+            >
+              --
+            </ButtonQuantity>
             <div>{coffeeQuantity}</div>
-            <ButtonQuantity type="button">+</ButtonQuantity>
+            <ButtonQuantity
+              type="button"
+              onClick={() => increaseProduct(coffeeId)}
+            >
+              +
+            </ButtonQuantity>
             <RemoveButton type="button">
               <Trash size={18} /> <span>REMOVER</span>
             </RemoveButton>

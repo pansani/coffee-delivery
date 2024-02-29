@@ -145,6 +145,11 @@ export const ButtonsPaymentContainer = styled.div`
   width: 35rem;
 
   margin-top: 32px;
+
+  button:focus {
+    border: 1px solid ${(props) => props.theme.purple};
+    background-color: ${(props) => props.theme["purple-light"]};
+  }
 `;
 
 export const ProductsCheckoutContainer = styled.div`

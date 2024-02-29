@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useState, ReactNode } from "react";
 import { coffees } from "../Coffees";
 
 interface CoffeeData {
@@ -31,22 +31,12 @@ export const UpdatedCoffeesContext = createContext<CoffeesContextValue>({
 
 export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
   const [allCoffees, setAllCoffees] = useState(coffees);
-  const [updatedCoffees, setUpdatedCoffees] = useState<CoffeeData[]>([]);
-
-  useEffect(() => {
-    setAllCoffees(coffees);
-    setUpdatedCoffees(allCoffees.filter((coffee) => coffee.quantity > 0));
-  }, [allCoffees]);
 
   const handleIncreaseQuantity = (id: number) => {
-    console.log("Passed id: ", id);
     setAllCoffees((prevCoffees) =>
       prevCoffees.map((coffee) => {
-        if (id === coffee.id) {
-          console.log("Coffee id:", coffee.id);
-          const updatedCoffee = { ...coffee, quantity: coffee.quantity + 1 };
-          console.log("Updated coffees:", updatedCoffee);
-          return updatedCoffee;
+        if (coffee.id === id) {
+          return { ...coffee, quantity: coffee.quantity + 1 };
         }
         return coffee;
       })
@@ -62,6 +52,8 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
       )
     );
   };
+
+  const updatedCoffees = allCoffees.filter((coffee) => coffee.quantity > 0);
 
   return (
     <UpdatedCoffeesContext.Provider

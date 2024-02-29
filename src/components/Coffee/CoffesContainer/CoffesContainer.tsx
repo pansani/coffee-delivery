@@ -1,19 +1,17 @@
 import { CoffeeCard } from "../CoffeeCard/CoffeeCard";
 import { CoffeesContainer, CoffeesContainerTitle } from "./style";
-import { coffees } from "../../../Coffees";
 import { useContext } from "react";
 import { UpdatedCoffeesContext } from "../../../contexts/UpdatedCoffeesContext";
 
 export function CoffeesContent() {
-  const { handleDecreaseQuantity, handleIncreaseQuantity } = useContext(
-    UpdatedCoffeesContext
-  );
+  const { handleDecreaseQuantity, handleIncreaseQuantity, allCoffees } =
+    useContext(UpdatedCoffeesContext);
 
   return (
     <>
       <CoffeesContainerTitle>Nossos Cafés</CoffeesContainerTitle>
       <CoffeesContainer>
-        {coffees.map((coffee) => (
+        {allCoffees.map((coffee) => (
           <CoffeeCard
             key={coffee.id}
             coffeeName={coffee.name}

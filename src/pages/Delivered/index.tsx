@@ -10,8 +10,6 @@ import DeliveryImage from "../../assets/delivery-image.svg";
 import { useContext } from "react";
 import { CheckoutContext } from "../../contexts/CheckoutContext";
 
-//Turn the data dynamic and not static via props or createContext and Reducers <- (study this)
-
 export function Delivered() {
   const { deliveryAddress, deliveryCity, paymentMethod } =
     useContext(CheckoutContext);

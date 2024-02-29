@@ -23,8 +23,6 @@ import { useContext } from "react";
 import { CheckoutContext } from "../../contexts/CheckoutContext";
 import { UpdatedCoffeesContext } from "../../contexts/UpdatedCoffeesContext";
 
-// Split this HTML code into more components, the code is too repetitive and too big
-
 export function Checkout() {
   const {
     handleStreetChange,
@@ -32,9 +30,11 @@ export function Checkout() {
     handleUfChange,
     handleCityChange,
     handlePaymentMethodChange,
+    handleBairroChange,
   } = useContext(CheckoutContext);
 
-  const { updatedCoffees } = useContext(UpdatedCoffeesContext);
+  const { updatedCoffees, handleDecreaseQuantity, handleIncreaseQuantity } =
+    useContext(UpdatedCoffeesContext);
 
   return (
     <>
@@ -65,7 +65,11 @@ export function Checkout() {
                 onChange={handleNumberChange}
               />
               <input type="text" placeholder="Complemento"></input>
-              <input type="text" placeholder="Bairro"></input>
+              <input
+                type="text"
+                placeholder="Bairro"
+                onChange={handleBairroChange}
+              ></input>
               <input
                 type="text"
                 placeholder="Cidade"
@@ -122,6 +126,9 @@ export function Checkout() {
                 src={coffee.image}
                 coffeeQuantity={coffee.quantity}
                 coffeePrice={coffee.value}
+                coffeeId={coffee.id}
+                increaseProduct={() => handleIncreaseQuantity(coffee.id)}
+                decreaseProduct={() => handleDecreaseQuantity(coffee.id)}
               />
             ))}
           </div>

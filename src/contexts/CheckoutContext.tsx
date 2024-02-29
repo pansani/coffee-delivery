@@ -14,6 +14,7 @@ interface CheckoutContextData {
   handleCityChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleUfChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePaymentMethodChange: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleBairroChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const CheckoutContext = createContext({} as CheckoutContextData);
@@ -24,9 +25,10 @@ export function CheckoutContextProvider({ children }: { children: ReactNode }) {
   const [number, setNumber] = useState<number>(0);
   const [city, setCity] = useState("");
   const [uf, setUf] = useState("");
+  const [bairro, setBairro] = useState("");
 
-  const deliveryAddress = `${street},  - , ${number}`;
-  const deliveryCity = ` ${city} ,  ${uf}`;
+  const deliveryAddress = `${street}, ${number}`;
+  const deliveryCity = ` ${bairro} - ${city}, ${uf}`;
 
   const handleStreetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStreet(e.target.value);
@@ -49,6 +51,10 @@ export function CheckoutContextProvider({ children }: { children: ReactNode }) {
     setPaymentMethod(e.currentTarget.value);
   };
 
+  const handleBairroChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBairro(e.target.value);
+  };
+
   return (
     <CheckoutContext.Provider
       value={{
@@ -65,6 +71,7 @@ export function CheckoutContextProvider({ children }: { children: ReactNode }) {
         handleCityChange,
         handleUfChange,
         handlePaymentMethodChange,
+        handleBairroChange,
       }}
     >
       {children}
