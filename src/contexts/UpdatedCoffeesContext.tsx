@@ -71,7 +71,7 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
 
   const updatedCoffees = allCoffees.filter((coffee) => coffee.quantity > 0);
   const totalValue = updatedCoffees.reduce(
-    (total, coffee) => total + Number(coffee.value),
+    (total, coffee) => total + Number(coffee.value) * coffee.quantity,
     0
   );
   const totalQuantity = updatedCoffees.reduce(

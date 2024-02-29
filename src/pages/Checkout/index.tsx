@@ -142,7 +142,7 @@ export function Checkout() {
           <PriceData>
             <div>
               <span>Total de itens</span>
-              <span>R$ {totalValue}0</span>
+              <span>R$ {totalValue.toFixed(2)}</span>
             </div>
             <div>
               <span>Entrega</span>
