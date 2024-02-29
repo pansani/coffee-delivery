@@ -16,6 +16,7 @@ interface CheckoutCoffeeCardProps {
   coffeeId: number;
   decreaseProduct: (id: number) => void;
   increaseProduct: (id: number) => void;
+  handleDeleteProduct: (id: number) => void;
 }
 
 export function CheckoutCoffeeCard({
@@ -26,6 +27,7 @@ export function CheckoutCoffeeCard({
   coffeeId,
   increaseProduct,
   decreaseProduct,
+  handleDeleteProduct,
 }: CheckoutCoffeeCardProps) {
   return (
     <CardCoffee>
@@ -47,7 +49,10 @@ export function CheckoutCoffeeCard({
             >
               +
             </ButtonQuantity>
-            <RemoveButton type="button">
+            <RemoveButton
+              type="button"
+              onClick={() => handleDeleteProduct(coffeeId)}
+            >
               <Trash size={18} /> <span>REMOVER</span>
             </RemoveButton>
           </CoffeeButtons>
