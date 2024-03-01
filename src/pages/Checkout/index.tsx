@@ -41,7 +41,7 @@ export function Checkout() {
   } = useContext(CheckoutContext);
 
   const {
-    updatedCoffees,
+    cartItems,
     totalValue,
     handleDecreaseQuantity,
     handleIncreaseQuantity,
@@ -158,7 +158,7 @@ export function Checkout() {
         </CheckoutFormsContainer>
         <ProductsCheckoutContainer>
           <div>
-            {updatedCoffees.map((coffee) => (
+            {cartItems!.map((coffee) => (
               <CheckoutCoffeeCard
                 key={coffee.id}
                 coffeeName={coffee.name}
