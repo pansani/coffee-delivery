@@ -1,7 +1,14 @@
+import { CurrencyDollar, MapPinLine } from "@phosphor-icons/react";
 import styled from "styled-components";
 
 export const CheckoutContainer = styled.div`
   position: relative;
+
+  @media (max-width: 768px) {
+    display: flex;
+
+    flex-direction: column;
+  }
 `;
 
 export const CheckoutFormsContainer = styled.div`
@@ -22,6 +29,13 @@ export const AdressFormContainer = styled.div`
   margin-top: 1rem;
   padding: 2.5rem;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 20rem;
+
+    padding: 1rem;
+  }
+
   div {
     color: ${(props) => props.theme["yellow-dark"]};
   }
@@ -32,6 +46,10 @@ export const AdressFormContainer = styled.div`
     margin-left: 5px;
 
     font-weight: 300;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   p {
@@ -39,6 +57,10 @@ export const AdressFormContainer = styled.div`
     font-weight: 300;
     margin-left: 27px;
     margin-top: 5px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   form {
@@ -47,6 +69,10 @@ export const AdressFormContainer = styled.div`
     flex-wrap: wrap;
     gap: 15px;
 
+    @media (max-width: 768px) {
+      margin-top: 10px;
+    }
+
     input {
       background: ${(props) => props.theme["base-input"]};
       border: none;
@@ -54,11 +80,22 @@ export const AdressFormContainer = styled.div`
       max-width: 560px;
       height: 2.625rem;
       padding: 10px;
+
+      @media (max-width: 768px) {
+        height: 2rem;
+
+        font-size: 10px;
+      }
     }
 
     input[placeholder="CEP"] {
       width: 12.5rem;
       display: block;
+
+      @media (max-width: 768px) {
+        width: 8rem;
+        display: inline-block;
+      }
     }
 
     input[placeholder="Rua"] {
@@ -68,13 +105,25 @@ export const AdressFormContainer = styled.div`
 
     input[placeholder="Numero"] {
       width: 12.5rem;
+
+      @media (max-width: 768px) {
+        width: 8rem;
+      }
     }
 
     input[placeholder="Complemento"] {
       width: 21.5rem;
+
+      @media (max-width: 768px) {
+        width: 12rem;
+      }
     }
     input[placeholder="Bairro"] {
       width: 12.5rem;
+
+      @media (max-width: 768px) {
+        width: 8rem;
+      }
     }
 
     input[placeholder="UF"] {
@@ -83,8 +132,20 @@ export const AdressFormContainer = styled.div`
 
     input[placeholder="Cidade"] {
       width: 16.8rem;
+
+      @media (max-width: 768px) {
+        width: 12rem;
+      }
     }
   }
+`;
+
+export const StyledMapPinLine = styled(MapPinLine)`
+  padding-top: 8px;
+`;
+
+export const StyledCurrencyDollar = styled(CurrencyDollar)`
+  padding-top: 8px;
 `;
 
 export const PaymentFormConatiner = styled.div`
@@ -99,12 +160,22 @@ export const PaymentFormConatiner = styled.div`
 
   color: ${(props) => props.theme.purple};
 
+  @media (max-width: 768px) {
+    width: 100%;
+
+    padding: 1rem;
+  }
+
   span {
     color: ${(props) => props.theme["base-subtitle"]};
 
     margin-left: 5px;
 
     font-weight: 300;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   p {
@@ -112,6 +183,10 @@ export const PaymentFormConatiner = styled.div`
     font-weight: 300;
     margin-left: 27px;
     margin-top: 3px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   button {
@@ -130,6 +205,10 @@ export const PaymentFormConatiner = styled.div`
 
     cursor: pointer;
 
+    @media (max-width: 768px) {
+      width: 6.5rem;
+    }
+
     p {
       font-size: 12px;
       margin-left: 0;
@@ -145,6 +224,12 @@ export const ButtonsPaymentContainer = styled.div`
   width: 35rem;
 
   margin-top: 32px;
+
+  @media (max-width: 768px) {
+    width: 21rem;
+
+    padding: 5px;
+  }
 
   button:focus {
     border: 1px solid ${(props) => props.theme.purple};
@@ -165,6 +250,12 @@ export const ProductsCheckoutContainer = styled.div`
   margin-top: 37px;
 
   padding: 40px;
+
+  @media (max-width: 768px) {
+    position: relative;
+
+    width: 100%;
+  }
 `;
 
 export const PriceData = styled.div`
@@ -194,4 +285,8 @@ export const SubmitCheckoutButton = styled.button<{ isDisabled?: boolean }>`
   cursor: ${(props) => (props.isDisabled ? "not-allowed" : "pointer")};
 
   border: none;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;

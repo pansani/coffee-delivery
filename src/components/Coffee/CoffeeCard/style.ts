@@ -21,16 +21,34 @@ export const ProductContainer = styled.div`
   align-items: center;
   gap: 10px;
 
+  @media (max-width: 768px) {
+    width: 10rem;
+    height: 17rem;
+
+    padding-top: 50px;
+  }
+
   img {
     position: absolute;
     top: -20px;
     left: 30%;
     width: 7.5rem;
     height: 7.5rem;
+
+    @media (max-width: 768px) {
+      width: 5rem;
+      height: 5rem;
+
+      left: 24%;
+    }
   }
 
   h1 {
     font-size: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
   }
 
   span {
@@ -42,6 +60,15 @@ export const ProductContainer = styled.div`
     color: ${(props) => props.theme["base-label"]};
     padding-top: 15px;
     margin-bottom: 30px;
+
+    @media (max-width: 768px) {
+      width: 8.5rem;
+      font-size: 12px;
+
+      padding-top: 10px;
+
+      margin-bottom: 15px;
+    }
   }
 `;
 
@@ -75,11 +102,19 @@ export const ProductQuantity = styled.div`
     border: none;
     cursor: pointer;
     background: transparent;
+
+    @media (max-width: 768px) {
+      width: 1rem;
+    }
   }
 
   p {
     width: 1.5rem;
     text-align: center;
+
+    @media (max-width: 768px) {
+      width: 1rem;
+    }
   }
 `;
 
@@ -89,6 +124,10 @@ export const BuyProductContainer = styled.div`
   width: 13rem;
 
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 9.5rem;
+  }
 `;
 
 export const ProductPrice = styled.div`

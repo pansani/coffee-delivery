@@ -10,15 +10,11 @@ import {
   PaymentFormConatiner,
   PriceData,
   ProductsCheckoutContainer,
+  StyledCurrencyDollar,
+  StyledMapPinLine,
   SubmitCheckoutButton,
 } from "./style";
-import {
-  Bank,
-  Cards,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-} from "@phosphor-icons/react";
+import { Bank, Cards, Money } from "@phosphor-icons/react";
 import { useContext, useEffect, useState } from "react";
 import { CheckoutContext } from "../../contexts/CheckoutContext";
 import { UpdatedCoffeesContext } from "../../contexts/UpdatedCoffeesContext";
@@ -70,7 +66,7 @@ export function Checkout() {
           <span>Complete seu pedido</span>
           <AdressFormContainer>
             <div>
-              <MapPinLine size={22} />
+              <StyledMapPinLine size={22} />
               <span>Endereco de entrega</span>
               <p>Informe o endereco onde deseja receber seu pedido</p>
             </div>
@@ -123,7 +119,7 @@ export function Checkout() {
           </AdressFormContainer>
           <PaymentFormConatiner>
             {" "}
-            <CurrencyDollar size={22} />
+            <StyledCurrencyDollar size={22} />
             <span>Pagamento</span>
             <p>
               O pagamento é feito na entrega. Escolha a forma que deseja pagar

@@ -4,6 +4,10 @@ export const DeliveredContainer = styled.div`
   margin-top: 8%;
   position: relative;
 
+  @media (max-width: 768px) {
+    position: static;
+  }
+
   h1 {
     color: ${(props) => props.theme["yellow-dark"]};
     font-weight: bold;
@@ -15,6 +19,14 @@ export const DeliveredContainer = styled.div`
     position: absolute;
     top: 27%;
     right: 0;
+
+    @media (max-width: 768px) {
+      width: 100%;
+
+      position: static;
+
+      margin-top: 2rem;
+    }
   }
 `;
 
@@ -35,6 +47,10 @@ export const DeliveryData = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const DataRow = styled.div`

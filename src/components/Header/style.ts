@@ -5,6 +5,10 @@ export const HeaderContainer = styled.header`
 
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const HeaderImg = styled.img`
@@ -31,6 +35,10 @@ export const PlaceContainer = styled.div`
 
   padding: 3px;
   border-radius: 6px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const CartButton = styled.button`

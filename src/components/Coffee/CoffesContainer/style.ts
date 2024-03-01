@@ -9,6 +9,15 @@ export const CoffeesContainer = styled.div`
   grid-gap: 20px;
 
   margin-top: 80px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+
+    min-width: 100%;
+
+    margin-top: 40px;
+  }
 `;
 
 export const CoffeesContainerTitle = styled.span`

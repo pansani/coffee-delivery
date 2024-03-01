@@ -6,10 +6,20 @@ export const IntroContainer = styled.div`
   margin-top: 8rem;
 
   position: relative;
+
+  @media (max-width: 768px) {
+    height: 16.3rem;
+
+    margin-top: 3rem;
+  }
 `;
 
 export const IntroHeader = styled.div`
   width: 36.75rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const IntroTitle = styled.h1`
@@ -21,6 +31,12 @@ export const IntroTitle = styled.h1`
   font-weight: bolder;
 
   padding-bottom: 1.3rem;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+
+    padding-bottom: 0.8rem;
+  }
 `;
 
 export const IntroSubtitle = styled.span`
@@ -29,6 +45,10 @@ export const IntroSubtitle = styled.span`
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   line-height: 130%;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -36,6 +56,10 @@ export const InfoContainer = styled.div`
   height: 5.25rem;
 
   margin-top: 5rem;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -82,14 +106,25 @@ export const InfoRowContainer = styled.div`
   span {
     color: ${(props) => props.theme["base-text"]};
     font-weight: 300;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 `;
 
 export const IntroImg = styled.img`
-  width: 476px;
-  height: 360px;
+  width: 29.75rem;
+  height: 22.5rem;
 
   position: absolute;
   right: 0;
   top: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+  }
 `;
