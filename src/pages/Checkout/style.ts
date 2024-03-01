@@ -254,7 +254,10 @@ export const ProductsCheckoutContainer = styled.div`
   @media (max-width: 768px) {
     position: relative;
 
+    min-height: 20rem;
     width: 100%;
+
+    margin-bottom: 25px;
   }
 `;
 
