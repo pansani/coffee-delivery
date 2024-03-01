@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useContext } from "react";
 import {
   BuyButton,
   BuyProductContainer,
@@ -9,7 +9,7 @@ import {
   ProductQuantity,
 } from "./style";
 import { ShoppingCart } from "@phosphor-icons/react";
-import { NavLink } from "react-router-dom";
+import { UpdatedCoffeesContext } from "../../../contexts/UpdatedCoffeesContext";
 
 export interface CoffeeCardProps {
   coffeeImage: string;
@@ -48,6 +48,8 @@ export function CoffeeCard({
     coffeeIsAlcoholic = undefined;
   }
 
+  const { handleSubmitCartCoffee } = useContext(UpdatedCoffeesContext);
+
   return (
     <ProductContainer>
       <img src={coffeeImage} />
@@ -69,11 +71,9 @@ export function CoffeeCard({
           <p>{coffeeQuantity}</p>
           <button onClick={increaseQuantity}>+</button>
         </ProductQuantity>
-        <NavLink to="./checkout" title="Checkout">
-          <BuyButton>
-            <ShoppingCart weight="fill" size={20} />
-          </BuyButton>
-        </NavLink>
+        <BuyButton onClick={handleSubmitCartCoffee}>
+          <ShoppingCart weight="fill" size={20} />
+        </BuyButton>
       </BuyProductContainer>
     </ProductContainer>
   );
