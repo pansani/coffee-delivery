@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
+import { UpdatedCoffeesContext } from "./UpdatedCoffeesContext";
 
 interface CheckoutContextData {
   deliveryAddress: string;
@@ -40,6 +41,8 @@ interface CheckoutContextFormData {
 export const CheckoutContext = createContext({} as CheckoutContextData);
 
 export function CheckoutContextProvider({ children }: { children: ReactNode }) {
+  const { handleEmptyCart } = useContext(UpdatedCoffeesContext);
+
   const [paymentMethod, setPaymentMethod] = useState("");
   const [street, setStreet] = useState("");
   const [number, setNumber] = useState<number | undefined>(undefined);
@@ -114,6 +117,7 @@ export function CheckoutContextProvider({ children }: { children: ReactNode }) {
     });
 
     handleEmptyFormValues();
+    handleEmptyCart();
   };
 
   return (

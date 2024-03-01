@@ -25,18 +25,10 @@ interface CoffeesContextValue {
   handleDecreaseQuantity: (id: number) => void;
   handleRemoveCoffee: (id: number) => void;
   handleSubmitCartCoffee: () => void;
+  handleEmptyCart: () => void;
 }
 
-export const UpdatedCoffeesContext = createContext<CoffeesContextValue>({
-  updatedCoffees: [],
-  allCoffees: [],
-  totalValue: 0,
-  totalQuantity: 0,
-  handleIncreaseQuantity: () => {},
-  handleDecreaseQuantity: () => {},
-  handleRemoveCoffee: () => {},
-  handleSubmitCartCoffee: () => {},
-});
+export const UpdatedCoffeesContext = createContext({} as CoffeesContextValue);
 
 export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -90,6 +82,14 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
 
     setCartItems(updatedCoffees);
   };
+
+  const handleEmptyCart = () => {
+    setAllCoffees((prevCoffees) =>
+      prevCoffees.map((coffee) => ({ ...coffee, quantity: 0 }))
+    );
+    setTotalQuantity(0);
+    setCartItems([]);
+  };
   return (
     <UpdatedCoffeesContext.Provider
       value={{
@@ -102,6 +102,7 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
         handleIncreaseQuantity,
         handleDecreaseQuantity,
         handleRemoveCoffee,
+        handleEmptyCart,
       }}
     >
       {children}

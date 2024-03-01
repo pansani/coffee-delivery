@@ -1,5 +1,3 @@
-// Use react-hoof-form and zod to the adress form
-
 import { NavLink } from "react-router-dom";
 import { CheckoutCoffeeCard } from "../../components/ChekoutCoffeeCard";
 import {
@@ -29,6 +27,7 @@ export function Checkout() {
     handleBairroChange,
     handleCepChange,
     handleComplementChange,
+    handleFormSubmit,
     bairro,
     city,
     complement,
@@ -37,7 +36,6 @@ export function Checkout() {
     uf,
     cep,
     paymentMethod,
-    handleFormSubmit,
   } = useContext(CheckoutContext);
 
   const {
