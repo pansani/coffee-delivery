@@ -7,6 +7,7 @@ export const IntroContainer = styled.div`
 
   position: relative;
 
+  z-index: 2;
   @media (max-width: 768px) {
     height: 16.3rem;
 
@@ -29,6 +30,7 @@ export const IntroTitle = styled.h1`
   line-height: 130%;
   font-size: 48px;
   font-weight: bolder;
+  z-index: 5;
 
   padding-bottom: 1.3rem;
 
@@ -45,6 +47,7 @@ export const IntroSubtitle = styled.span`
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   line-height: 130%;
+  z-index: 4;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -56,6 +59,9 @@ export const InfoContainer = styled.div`
   height: 5.25rem;
 
   margin-top: 5rem;
+
+  z-index: 2;
+  position: relative;
 
   @media (max-width: 768px) {
     margin-top: 2rem;
@@ -120,6 +126,8 @@ export const IntroImg = styled.img`
   position: absolute;
   right: 0;
   top: 0;
+
+  z-index: -1;
 
   @media (max-width: 768px) {
     width: 100%;

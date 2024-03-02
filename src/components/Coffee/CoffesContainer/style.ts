@@ -7,7 +7,7 @@ export const CoffeesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
-
+  margin: 0 auto;
   margin-top: 80px;
 
   @media (max-width: 768px) {
