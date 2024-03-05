@@ -1,5 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
 import { coffees } from "../Coffees";
+import { Bounce, toast } from "react-toastify";
 
 interface CoffeeData {
   image: string;
@@ -72,6 +73,18 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
     (total, coffee) => total + Number(coffee.value) * coffee.quantity,
     0
   );
+  const notifyProductAdded = () =>
+    toast("Produto adicionado ao carrinho!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
 
   const handleSubmitCartCoffee = () => {
     const newTotalQuantity = updatedCoffees.reduce(
@@ -79,6 +92,7 @@ export function UpdatedCoffeesProvider({ children }: { children: ReactNode }) {
       0
     );
     setTotalQuantity(newTotalQuantity);
+    notifyProductAdded();
 
     setCartItems(updatedCoffees);
   };
